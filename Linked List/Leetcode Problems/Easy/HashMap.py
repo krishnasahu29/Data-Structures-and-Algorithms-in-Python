@@ -31,6 +31,7 @@ class MyHashMap:
     def print(self):
         print(self.dict_)
 
+
 # Your MyHashMap object will be instantiated and called as such:
 if __name__ == '__main__':
     obj = MyHashMap()
