@@ -39,7 +39,7 @@ class Graph:
             print(s, end=" ")
 
             # Get all adjacent vertices of the
-            # dequeued vertex s. If a adjacent
+            # dequeued vertex s. If an adjacent
             # has not been visited, then mark it
             # visited and enqueue it
             for i in self.graph[s]:

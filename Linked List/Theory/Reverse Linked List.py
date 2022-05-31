@@ -3,19 +3,25 @@ class ListNode:
         self.val = val
         self.next = next
 
+
 class ReverseLinkedList:
 
-    def __init__(self):
-        self.head = None
+    def reverse(self, head: ListNode):
+        if head is None or head.next is None:
+            p: ListNode = self.reverse(head.next)
 
-    def reverse(self):
+            head.next.next = head
+            head.next = None
+            return p
 
-        prev = None
-        curr = self.head
-        while curr:
-            node = curr.next
-            curr.next = prev
-            prev = curr
-            curr = node
 
-        self.head = prev
+if __name__ == '__main__':
+    head = ListNode(1)
+    sec = ListNode(1)
+    th = ListNode(2)
+
+    head.next = sec
+    sec.next = th
+    th.next = None
+
+    print(ReverseLinkedList().reverse(head))
