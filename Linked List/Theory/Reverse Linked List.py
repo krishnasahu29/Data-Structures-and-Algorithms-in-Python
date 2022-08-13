@@ -1,19 +1,57 @@
+# Python program to reverse a linked list
+# Time Complexity : O(n)
+# Space Complexity : O(1)
+
 class ListNode:
-    def __init__(self, val=0, next=None):
-        self.val = val
-        self.next = next
+
+    # Constructor to initialize the node object
+    def __init__(self, data):
+        self.data = data
+        self.next = None
 
 
-class ReverseLinkedList:
+class LinkedList:
 
-    def reverse(self, head: ListNode):
-        if head is None or head.next is None:
-            p: ListNode = self.reverse(head.next)
+    # Function to initialize head
+    def __init__(self):
+        self.head = None
 
-            head.next.next = head
-            head.next = None
-            return p
+    # Function to reverse the linked list
+    def reverse(self):
+        prev = None
+        current = self.head
+        while current is not None:
+            next = current.next
+            current.next = prev
+            prev = current
+            current = next
+        self.head = prev
 
+    # Function to insert a new node at the beginning
+    def push(self, new_data):
+        new_node = ListNode(new_data)
+        new_node.next = self.head
+        self.head = new_node
+
+    # Utility function to print the linked LinkedList
+    def printList(self):
+        temp = self.head
+        while temp:
+            print(temp.data)
+            temp = temp.next
+
+# Driver code
+ll = LinkedList()
+ll.push(20)
+ll.push(4)
+ll.push(15)
+ll.push(85)
+
+print("Given Linked List")
+ll.printList()
+ll.reverse()
+print("\nReversed Linked List")
+ll.printList()
 
 if __name__ == '__main__':
     head = ListNode(1)
@@ -23,5 +61,3 @@ if __name__ == '__main__':
     head.next = sec
     sec.next = th
     th.next = None
-
-    print(ReverseLinkedList().reverse(head))

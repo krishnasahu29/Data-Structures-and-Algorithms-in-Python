@@ -36,6 +36,8 @@ class Merge:
                 j = j + 1
                 k = k + 1
 
+        return arr
+
 
 if __name__ == '__main__':
 
@@ -47,6 +49,6 @@ if __name__ == '__main__':
         arr.append(e)
         
     sort = Merge(arr)
-    sort.MergeSort(arr)
+    print(sort.MergeSort(arr))
 
     print(arr)

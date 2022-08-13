@@ -2,8 +2,10 @@ def is_valid_state(state):
     # check if it is a valid solution
     return True
 
+
 def get_candidates(state):
     return []
+
 
 def search(state, solutions):
     if is_valid_state(state):
@@ -14,6 +16,7 @@ def search(state, solutions):
         state.add(candidate)
         search(state, solutions)
         state.remove(candidate)
+
 
 def solve():
     solutions = []

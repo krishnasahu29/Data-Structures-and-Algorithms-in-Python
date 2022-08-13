@@ -27,13 +27,13 @@ def zizagtraversal(root):
     # right to left
     ltr = True
 
-    # append root to currentlevel stack
+    # append root to current level stack
     currentLevel.append(root)
 
     # Check if stack is empty
     while len(currentLevel) > 0:
         # pop from stack
-        temp = currentLevel.pop(-1)
+        temp = currentLevel.pop()
         # print the data
         res.append(temp.data)
 

@@ -25,3 +25,5 @@ class Solution:
         return len(nums) + 1
 
 
+if __name__ == '__main__':
+    print(Solution().firstMissingPositive([-1, 0, 1, 2]))
