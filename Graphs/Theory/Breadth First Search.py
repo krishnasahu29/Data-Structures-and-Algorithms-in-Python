@@ -33,15 +33,12 @@ class Graph:
 
         while queue:
 
-            # Dequeue a vertex from
-            # queue and print it
+            # Dequeue a vertex from queue and print it
             s = queue.pop(0)
             print(s, end=" ")
 
-            # Get all adjacent vertices of the
-            # dequeued vertex s. If an adjacent
-            # has not been visited, then mark it
-            # visited and enqueue it
+            # Get all adjacent vertices of the dequeued vertex s.
+            # If an adjacent has not been visited, then mark it visited and enqueue it
             for i in self.graph[s]:
                 if visited[i] is False:
                     queue.append(i)

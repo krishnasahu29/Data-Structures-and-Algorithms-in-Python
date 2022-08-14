@@ -1,9 +1,6 @@
 from collections import defaultdict
 
-
-# This class represents a directed graph using
-# adjacency list representation
-
+# This class represents a directed graph using adjacency list representation
 
 class Graph:
 
@@ -18,37 +15,16 @@ class Graph:
         self.graph[u].append(v)
 
     # A function used by DFS
-    def DFSUtil(self, v, visited):
-
-        # Mark the current node as visited
-        # and print it
-        visited.add(v)
-        print(v, end=' ')
-
-        # Recur for all the vertices
-        # adjacent to this vertex
-        for neighbour in self.graph[v]:
-            if neighbour not in visited:
-                self.DFSUtil(neighbour, visited)
-
-    # The function to do DFS traversal. It uses
-    # recursive DFSUtil()
-    def DFS(self, v):
-
-        # Create a set to store visited vertices
-        visited = set()
-
-        # Call the recursive helper function
-        # to print DFS traversal
-        self.DFSUtil(v, visited)
+    def dfs(self, visited, node):  # function for dfs
+        if node not in visited:
+            print(node, end=' ')
+            visited.add(node)
+            for neighbour in self.graph[node]:
+                self.dfs(visited, neighbour)
 
 
 # Driver code
-
-
-# Create a graph given
-# in the above diagram
-
+# Create a graph given in the above diagram
 
 if __name__ == '__main__':
     g = Graph()
@@ -60,4 +36,4 @@ if __name__ == '__main__':
     g.addEdge(3, 3)
 
     print("Following is DFS from (starting from vertex 2)")
-    g.DFS(2)
+    g.dfs(node=2, visited=set())
