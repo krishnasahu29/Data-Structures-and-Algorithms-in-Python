@@ -5,7 +5,7 @@
 class Node:
     def __init__(self, val, neighbors):
         self.val = val
-        self.neighbors = neighbors
+        self.neighbors = neighbors if neighbors is not None else []
 
 
 class Solution:
@@ -18,17 +18,17 @@ class Solution:
         :return:
         """
 
-        if not node:
-            return None
+        oldToNew = {}
 
-        cache = {node: Node(node.val, [])}
+        def dfs(node):
+            if node in oldToNew:
+                return oldToNew[node]
 
-        def search(org):
-            for suc in org.neighbors:
-                if suc not in cache:
-                    cache[suc] = Node(suc.val, [])
-                    search(suc)
-                cache[org].neighbors += cache[suc],
+            copy = Node(node.val)
+            oldToNew[node] = copy
+            for nei in node.neighbors:
+                copy.neighbors.append(dfs(nei))
 
-        search(node)
-        return cache[node]
+            return copy
+
+        return dfs(node) if node else None

@@ -11,5 +11,28 @@ class TreeNode:
         self.left = left
         self.right = right
 class Solution:
-    def sortedArrayToBST(self, nums: List[int]) -> Optional[TreeNode]:
-        pass
+    def sortedArrayToBST(self, arr: List[int]) -> Optional[TreeNode]:
+        if not arr:
+            return None
+
+            # find middle index
+        mid = (len(arr)) // 2
+
+        # make the middle element the root
+        root = TreeNode(arr[mid])
+
+        # left subtree of root has all
+        # values <arr[mid]
+        root.left = self.sortedArrayToBST(arr[:mid])
+
+        # right subtree of root has all
+        # values >arr[mid]
+        root.right = self.sortedArrayToBST(arr[mid + 1:])
+        return root
+
+    # A utility function to print the preorder
+    # traversal of the BST
+    def preOrder(node):
+        if not node:
+            return
+
